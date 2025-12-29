@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Stocks</title>
+</head>
+<body>
+    <h1>Available Stocks</h1>
+    <table border="1">
+        <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.company }}</td>
+            <td>{{ stock.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

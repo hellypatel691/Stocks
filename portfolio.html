@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1>Your Portfolio</h1>
+
+    <h2>Owned Stocks</h2>
+    {% if owned_stocks %}
+        <table border="1">
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Quantity Owned</th>
+            </tr>
+            {% for stock, qty in owned_stocks %}
+            <tr>
+                <td>{{ stock }}</td>
+                <td>{{ qty }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You do not own any stocks yet.</p>
+    {% endif %}
+
+    <h2>Market Stocks</h2>
+    <table border="1">
+        <tr>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Total Stocks</th>
+            <th>Sold Stocks</th>
+            <th>Available Stocks</th>
+        </tr>
+        {% for symbol, company, price, total_stocks, sold_stocks in market_stocks %}
+        <tr>
+            <td>{{ symbol }}</td>
+            <td>{{ company }}</td>
+            <td>{{ price }}</td>
+            <td>{{ total_stocks }}</td>
+            <td>{{ sold_stocks }}</td>
+            <td>{{ total_stocks - sold_stocks }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
